@@ -1,0 +1,5 @@
+export function Field({label,name,value,onChange,type="text",required=false,placeholder="",options,disabled=false}) {
+  return <label className="field"><span>{label}{required&&" *"}</span>{options?<select name={name} value={value ?? ""} onChange={onChange} required={required} disabled={disabled}><option value="">Select {label}</option>{options.map(o=><option key={o.value} value={o.value}>{o.label}</option>)}</select>:<input name={name} value={value ?? ""} onChange={onChange} type={type} required={required} placeholder={placeholder} disabled={disabled}/>}</label>;
+}
+export function TextArea({label,name,value,onChange,required=false,placeholder=""}){return <label className="field"><span>{label}{required&&" *"}</span><textarea name={name} value={value??""} onChange={onChange} required={required} placeholder={placeholder}/></label>}
+export function FormActions({onCancel,submit="Save",loading=false}){return <div className="form-actions"><button type="button" className="btn secondary" onClick={onCancel}>Cancel</button><button className="btn primary" disabled={loading}>{loading?"Saving...":submit}</button></div>}
